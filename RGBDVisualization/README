@@ -1,0 +1,20 @@
+Used for converting raw RGBD data into PNG files. Note that converting into PNG will
+give you less precision, especially the depth data. Anything beyond 20 meters in depth
+data has been scaled to same number 255. You can change MAX_DEPTH constant at the top
+of the "main.cpp" to change the scaling of depth data.
+
+<Requires>
+1) C++ compiler
+2) OpenCV
+
+<Usage>
+1) run "make"
+2) run "./visualize <RGBD_FILE_NAME>"
+    - replace the <RGBD_FILE_NAME> with the file that contains raw RGBD information.
+3) resulting PNG files will be located under "out/<RGBD_FILE_NAME>" directory.
+
+
+
+
+
+
