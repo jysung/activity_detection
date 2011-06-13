@@ -1,0 +1,14 @@
+Used for computing features we have introduced in our paper.
+
+<Requires>
+1) C++ compiler
+
+<Usage>
+1) run "make"
+2)
+
+----------------------------------------------------------------------------------------
+This code is released as part of the Human Activity Detection project at Cornell University.
+Refer to the website for more details about the project.
+(http://pr.cs.cornell.edu/humanactivities/)
+
