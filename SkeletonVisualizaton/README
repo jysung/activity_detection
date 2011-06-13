@@ -1,0 +1,16 @@
+Takes specific frame from the specific skeleton data and shows in
+Matlab 3D figure.
+
+<Requires>
+1) Matlab (tested on R2010a and above)
+
+<Usage>
+1) launch Matlab
+2) run by "visualizeSkeleton('SKELETON_FILE_NAME',FRAME_NUM)"
+    - replace SKELETON_FILE_NAME with skeleton data file
+    - replace FRAME_NUM with frame number you wish to visualize
+
+----------------------------------------------------------------------------------------
+This is code released as part of the Human Activity Detection project at Cornell University.
+Refer to the website for more details about the project.
+(http://pr.cs.cornell.edu/humanactivities/)
