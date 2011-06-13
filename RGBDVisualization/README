@@ -14,7 +14,7 @@ of the "main.cpp" to change the scaling of depth data.
 3) resulting PNG files will be located under "out/<RGBD_FILE_NAME>" directory.
 
 ----------------------------------------------------------------------------------------
-This is code released as part of the Human Activity Detection project at Cornell University.
+This code is released as part of the Human Activity Detection project at Cornell University.
 Refer to the website for more details about the project.
 (http://pr.cs.cornell.edu/humanactivities/)
 
