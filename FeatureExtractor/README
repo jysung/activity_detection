@@ -1,11 +1,42 @@
 Used for computing features we have introduced in our paper.
+This computes the features of the data from multiple files (one person) and
+outputs features to single file in CSV file format.
 
 <Requires>
 1) C++ compiler
 
 <Usage>
 1) run "make"
-2)
+2) ./featureExtractor (data location) (output file)
+    - data location: directory that contains Skeleton and RGBD data files
+                     along with activityLabel.txt
+    - output file  : output file to write all the features
+
+<Output Format>
+The output file is CSV file that has the following format.
+
+L##########,F1,F2,F3,F4,...,F907,
+    L########## -> each file name; # is integer
+                -> L attached to indicate it is file name not a feature
+    F# -> #th feature value
+       -> mostly 'double' not 'int'
+
+ex) Here is one example..
+       L0512164529,0.0006025,-0.0000002,0.0004676,0.9951665, ......
+
+<List of Features>
+Refer to our papers to understand what following features represent
+  F1 ~ F459 : skeletal features
+F460 ~ F651 : skeletal HOG features on RGB Image
+F652 ~ F683 : RGB HOG
+F684 ~ F875 : skeletal HOG features on Depth Image
+F875 ~ F907 : Depth HOG
+
+Using only (skeletal features + skeletal HOG on RGB and Depth) gave us the 
+best result. 
+
+The code that computes HOG features was originally obtained from 
+    (http://people.cs.uchicago.edu/~pff/latent/)
 
 ----------------------------------------------------------------------------------------
 This code is released as part of the Human Activity Detection project at Cornell University.
