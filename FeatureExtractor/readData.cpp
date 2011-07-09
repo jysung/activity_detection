@@ -1,4 +1,4 @@
-#include <string.h>
+bool READ_FROM_PNG = true;
 
 class readData {
 private:
@@ -18,7 +18,6 @@ private:
     ifstream* file_RGBD;
     
     bool mirrored;
-
 
     // print error message
     void errorMsg(string message, bool exitProgram) {
@@ -153,6 +152,53 @@ private:
         file_RGBD->close();
         printf("\tRGBD file closed\n");
     }
+
+    // return true if data retrieving was successful
+    bool readNextPNG(int ***data) {
+        stringstream ss;
+        ss << currentFrameNum;
+        fileName_RGBD = dataLocation + fileName + "/RGB_" + ss.str() +".png";
+        string fileName_Depth = dataLocation + fileName + "/Depth_" + ss.str() +".png";
+        if (currentFrameNum == 1) {
+            printf("\tOpening \"%s\" and so forth..\n", 
+                    (char*)fileName_RGBD.c_str());
+            printf("\tOpening \"%s\" and so forth..\n", 
+                    (char*)fileName_Depth.c_str());
+        }
+
+        // Load an image from file
+        cv::Mat rgbImage = cv::imread((char*)fileName_RGBD.c_str(),1);
+        cv::Mat colorArr[3];
+        cv::split(rgbImage, colorArr);
+        
+        cv::Mat depthImage = cv::imread((char*)fileName_Depth.c_str(),-1);
+        
+        if (rgbImage.data == NULL) {
+            printf("ERROR! Unable to open file %s.\n", (char*)fileName_RGBD.c_str());
+            exit(1);
+        }
+        if (depthImage.data == NULL) {
+            printf("ERROR! Unable to open file %s.\n", (char*)fileName_Depth.c_str());
+            exit(1);
+        }
+        
+        for (int y=0; y<Y_RES; y++){ 
+            // opencv uses BGR order
+            uchar* Bptr = colorArr[0].ptr<uchar>(y); 
+            uchar* Gptr = colorArr[1].ptr<uchar>(y); 
+            uchar* Rptr = colorArr[2].ptr<uchar>(y); 
+            ushort* IRptr = depthImage.ptr<ushort>(y); 
+            for(int x=0;x<X_RES; x++){
+                // our data is stored in RGB order
+                data[x][y][0] = Rptr[x]; 
+                data[x][y][1] = Gptr[x]; 
+                data[x][y][2] = Bptr[x]; 
+                data[x][y][3] = IRptr[x];
+            } 
+        } 
+        
+        return true;
+    }
     
     // return true if data retrieving was successful
     bool readNextLine_RGBD(int ***IMAGE) {
@@ -223,7 +269,12 @@ public:
             return false;
         }
         
-        bool status_RGBD = readNextLine_RGBD(IMAGE);
+        bool status_RGBD;
+        if (!READ_FROM_PNG) {
+            status_RGBD = readNextLine_RGBD(IMAGE);
+        } else {
+            status_RGBD = readNextPNG(IMAGE);    
+        }
         if (status_RGBD) {
             lastFrame = currentFrameNum;
         } else {
@@ -245,7 +296,9 @@ public:
         this->mirrored = mirrored;
         
         prepareSkeletonData();
-        prepareRGBDData();
+        if (!READ_FROM_PNG) {
+            prepareRGBDData();
+        }
     }
     
     readData() {
@@ -254,7 +307,9 @@ public:
     
     ~readData(){
         closeSkeletonData();
-        closeRGBDData();
+        if (!READ_FROM_PNG) {
+            closeRGBDData();
+        }
         printf("\n");
     }
 

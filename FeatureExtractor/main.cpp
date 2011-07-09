@@ -1,3 +1,5 @@
+#include "cv.h"
+#include "highgui.h"
 #include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,6 +12,7 @@
 #include <cmath>
 #include <dirent.h>
 #include <algorithm>
+#include <string.h>
 
 using namespace std;
 
