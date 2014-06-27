@@ -1,8 +1,27 @@
 This code is released as part of the Human Activity Detection project at Personal Robotics Lab at Cornell University. 
 
 Currently two codes are available:
-- Extracting features from sequence of human activity: Refer to [Sung et al. ICRA 2012] below.
-- Visualizing skeleton data for Cornell Activity Dataset 60 (CAD-60) 
+- Extracting features from sequence of human activity: 
+    Refer to [Sung et al. ICRA 2012] below.
+- Visualizing skeleton data for Cornell Activity Dataset 
+
+
+===== How to run it? =====
+1. Download Cornell Activity Dataset from 
+        http://pr.cs.cornell.edu/humanactivities/data.php
+
+2. Feature Extraction - Refer to README inside FeatureExtractor
+
+
+===== Project Website =====
+
+http://pr.cs.cornell.edu/humanactivities/
+
+
+===== Any Questions about the code or CAD-60 dataset? =====
+
+Contact: Jaeyong Sung - jysung@cs.cornell.edu
+
 
 ===== More details about this code available at =====
 
@@ -17,22 +36,4 @@ International Conference on Robotics and Automation (ICRA), 2012.
     booktitle={International Conference on Robotics and Automation (ICRA)},
     year={2012}
 }
-
-===== How to run it? =====
-1. Download Cornell Activity Dataset 60 (CAD-60) from 
-        http://pr.cs.cornell.edu/humanactivities/data.php
-
-2. Run Feature Extraction - Refer to README inside FeatureExtractor
-
-
-===== Project Website =====
-
-http://pr.cs.cornell.edu/humanactivities/
-
-
-===== Any Questions about the code or CAD-60 dataset? =====
-
-Contact: Jaeyong Sung - jysung@cs.cornell.edu
-
-
 
