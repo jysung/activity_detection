@@ -1,4 +1,38 @@
-This code is released as part of the Human Activity Detection project at Cornell University.
-Refer to the website for more details about the project.
-(http://pr.cs.cornell.edu/humanactivities/)
+This code is released as part of the Human Activity Detection project at Personal Robotics Lab at Cornell University. 
+
+Currently two codes are available:
+- Extracting features from sequence of human activity: Refer to [Sung et al. ICRA 2012] below.
+- Visualizing skeleton data for Cornell Activity Dataset 60 (CAD-60) 
+
+===== More details about this code available at =====
+
+Unstructured Human Activity Detection from RGBD Images, 
+Jaeyong Sung, Colin Ponce, Bart Selman, Ashutosh Saxena. 
+International Conference on Robotics and Automation (ICRA), 2012.
+
+(bibtex)
+@inproceedings{sung_rgbdactivity_2012,
+    title={Unstructured Human Activity Detection from RGBD Images},
+    author={Jaeyong Sung and Colin Ponce and Bart Selman and Ashutosh Saxena},
+    booktitle={International Conference on Robotics and Automation (ICRA)},
+    year={2012}
+}
+
+===== How to run it? =====
+1. Download Cornell Activity Dataset 60 (CAD-60) from 
+        http://pr.cs.cornell.edu/humanactivities/data.php
+
+2. Run Feature Extraction - Refer to README inside FeatureExtractor
+
+
+===== Project Website =====
+
+http://pr.cs.cornell.edu/humanactivities/
+
+
+===== Any Questions about the code or CAD-60 dataset? =====
+
+Contact: Jaeyong Sung - jysung@cs.cornell.edu
+
+
 
