@@ -22,16 +22,24 @@ public:
         fprintf(pRecFile, "%.3f,", a);
     }
 
+  // Projection formulas as described in 
+  // https://groups.google.com/forum/#!msg/unitykinect/1ZFCHO9PpjA/1KdxUTdq90gJ.
   // Given (x,y,z) coordinates, converts that point into its x pixel number in the 2D image.
   int xPixelFromCoords(double x, double y, double z)
   {
-    return (int) (156.8584456124928 + 0.0976862095248 * x - 0.0006444357104 * y + 0.0015715946682 * z);
+    const int kRealWorldXtoZ = 1.122133;
+    const int kResX = 640;
+    const int kFCoeffX = kResX / kRealWorldXtoZ;
+    return (int) (kFCoeffX * x / z) + (kResX / 2);
   }
 
   // Given (x,y,z) coordinates, converts that point into its y pixel number in the 2D image.
   int yPixelFromCoords(double x, double y, double z)
   {
-    return (int) (125.5357201011431 + 0.0002153447766 * x - 0.1184874093530 * y - 0.0022134485957 * z);
+    const int kRealWorldYtoZ = 0.84176;
+    const int kResY = 480;
+    const int kFCoeffY = kResY / kRealWorldYtoZ;
+    return (int) (kResY / 2) - (kFCoeffY * y / z);
   }
 
   /* Given an image IMAGE and skeleton data, as well as sets of indices into the data and pos_data
