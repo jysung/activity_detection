@@ -29,8 +29,8 @@ public:
   {
     const int kRealWorldXtoZ = 1.122133;
     const int kResX = 640;
-    const int fCoeffX = kResX / kRealWorldXtoZ;
-    return (int) (fCoeffX * x / z) + (kResX / 2);
+    const int kFCoeffX = kResX / kRealWorldXtoZ;
+    return (int) (kFCoeffX * x / z) + (kResX / 2);
   }
 
   // Given (x,y,z) coordinates, converts that point into its y pixel number in the 2D image.
@@ -38,8 +38,8 @@ public:
   {
     const int kRealWorldYtoZ = 0.84176;
     const int kResY = 480;
-    const int fCoeffY = kResY / kRealWorldYtoZ;
-    return (int) (kResY / 2) - (fCoeffY * y / z);
+    const int kFCoeffY = kResY / kRealWorldYtoZ;
+    return (int) (kResY / 2) - (kFCoeffY * y / z);
   }
 
   /* Given an image IMAGE and skeleton data, as well as sets of indices into the data and pos_data
